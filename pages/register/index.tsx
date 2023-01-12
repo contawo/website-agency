@@ -22,7 +22,6 @@ const Register = () => {
     
     const [user, setUser] = useState<User>({authId: "", businessName: "", email: "", description: ""})
     const [error, setError] = useState<Error>({nameErr: "", descriptionErr: "", passwordErr: ""})
-    const [project, setProject] = useState<Project>({authId: "", progress: "", completed: false, start: "", end: "", url: ""})
 
     const router = useRouter();
 
