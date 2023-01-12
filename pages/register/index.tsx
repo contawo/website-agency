@@ -6,7 +6,15 @@ import { useRouter } from "next/router";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Preahvihear } from "@next/font/google";
+
+const postForm = async (data: User) => fetch("/api/mail", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+    }
+})
 
 const Register = () => {
     const [password, setPassword] = useState<string>("")
@@ -18,7 +26,7 @@ const Register = () => {
 
     const router = useRouter();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (user.email.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
             setEmailError("")
         } else {
@@ -27,7 +35,7 @@ const Register = () => {
         }
         
         if (user.email && password && user.businessName && user.description) {
-            createUserWithEmailAndPassword(auth, user.email, password).then(res => {
+            createUserWithEmailAndPassword(auth, user.email, password).then(async res => {
                 const user2 = {
                     authId: res.user.uid,
                     businessName: user.businessName,
@@ -46,6 +54,7 @@ const Register = () => {
                 const ref = collection(db, "user");
                 const projectRef = collection(db, "projects");
                 if (user2.authId && project2.authId) {
+                    await postForm(user2)
                     addDoc(ref, user2)
                     addDoc(projectRef, project2)
                 } else {
