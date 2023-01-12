@@ -5,7 +5,9 @@ const MainLayout = ({children} : {children: React.ReactNode}) => {
     return (
         <div>
             <NavBar />
-            {children}
+            <main>
+                {children}
+            </main>
         </div>
     )
 }

@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
+import UserLayout from "../layout/UserLayout";
 
 const User = () => {
     const router = useRouter();
     const user: string = router.query.userId as string;
     return (
-        <div>
+        <UserLayout>
             <h1>User {user}</h1>
-        </div>
+        </UserLayout>
     )
 }
 
