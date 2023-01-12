@@ -6,22 +6,15 @@ import { useRouter } from "next/router";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Preahvihear } from "@next/font/google";
 
 const Register = () => {
-    const [id, setId] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [emailError, setEmailError] = useState<string>("")
     
-    const [user, setUser] = useState<User>({authId: id, businessName: "", email: "", description: ""})
+    const [user, setUser] = useState<User>({authId: "", businessName: "", email: "", description: ""})
     const [error, setError] = useState<Error>({nameErr: "", descriptionErr: "", passwordErr: ""})
-    const project : Project = {
-        authId: id,
-        progress: "Consultation",
-        completed: false,
-        start: "Progect not Started",
-        end: "Progect not Started",
-        url: ""
-    }
+    const [project, setProject] = useState<Project>({authId: "", progress: "", completed: false, start: "", end: "", url: ""})
 
     const router = useRouter();
 
@@ -35,11 +28,29 @@ const Register = () => {
         
         if (user.email && password && user.businessName && user.description) {
             createUserWithEmailAndPassword(auth, user.email, password).then(res => {
-                setId(res.user.uid)
+                const user2 = {
+                    authId: res.user.uid,
+                    businessName: user.businessName,
+                    email: user.email,
+                    description: user.description
+                }
+                const project2 = {
+                    authId: res.user.uid,
+                    progress: "Consultation",
+                    completed: false,
+                    start: "Progect not Started",
+                    end: "Progect not Started",
+                    url: ""
+                }
+                
                 const ref = collection(db, "user");
                 const projectRef = collection(db, "projects");
-                addDoc(ref, user)
-                addDoc(projectRef, project)
+                if (user2.authId && project2.authId) {
+                    addDoc(ref, user2)
+                    addDoc(projectRef, project2)
+                } else {
+                    alert(`Failed to get id ${res.user.uid}`)
+                }
                 router.push("/email")
             }).catch(err => {
                 console.log(err)
