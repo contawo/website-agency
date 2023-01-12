@@ -1,20 +1,56 @@
 import Link from "next/link";
 import MainLayout from "../../layout/MainLayout";
 import {useState} from "react";
-import { User } from "../../types/types";
+import { User, Project, Error } from "../../types/types";
 import { useRouter } from "next/router";
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
-    const [user, setUser] = useState<User>({
-        authId: "",
-        businessName: "",
-        email: "",
-        description: ""
-    })
+    const [id, setId] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [emailError, setEmailError] = useState<string>("")
+    
+    const [user, setUser] = useState<User>({authId: id, businessName: "", email: "", description: ""})
+    const [error, setError] = useState<Error>({nameErr: "", descriptionErr: "", passwordErr: ""})
+    const project : Project = {
+        authId: id,
+        progress: "Consultation",
+        completed: false,
+        start: "Progect not Started",
+        end: "Progect not Started",
+        url: ""
+    }
+
     const router = useRouter();
 
     const handleSubmit = () => {
-        router.push("/email")
+        if (user.email.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+            setEmailError("")
+        } else {
+            setUser({...user, email: ""})
+            setEmailError("Please enter a valid email")
+        }
+        
+        if (user.email && password && user.businessName && user.description) {
+            createUserWithEmailAndPassword(auth, user.email, password).then(res => {
+                setId(res.user.uid)
+                const ref = collection(db, "user");
+                const projectRef = collection(db, "projects");
+                addDoc(ref, user)
+                addDoc(projectRef, project)
+                router.push("/email")
+            }).catch(err => {
+                console.log(err)
+            })
+        } else {
+            setError({
+                nameErr: user.businessName ? "" : "Business name is required",
+                descriptionErr: user.description? "" : "Description is required",
+                passwordErr: password ? "" : "Password is required"
+            })
+        }
     }
 
     return (
@@ -22,29 +58,43 @@ const Register = () => {
             <main>
                 <section></section>
                 <section>
-                <h2>Register an account</h2>
+                    <h2>Register an account</h2>
                     <form>
                         <section>
                             <input 
                                 type="text" 
+                                value={user.businessName} 
                                 placeholder="Enter business name..." 
-                                onChange={() => setUser({...user, businessName: ""})}
+                                onChange={(e) => setUser({...user, businessName: e.target.value})}
                             />
-                            <p></p>
+                            <p>{error.nameErr}</p>
                         </section>
-                        <input 
-                            type="email" 
-                            placeholder="Enter business email..." 
-                            onChange={() => setUser({...user, email: ""})}
-                        />
-                        <textarea
-                            placeholder="Enter business description"
-                            onChange={() => setUser({...user, description: ""})}
-                        />
-                        <input 
-                            type="password" 
-                            placeholder="Enter a password..."
-                        />
+                        <section>
+                            <input 
+                                type="email" 
+                                value={user.email}
+                                placeholder="Enter business email..." 
+                                onChange={(e) => setUser({...user, email: e.target.value})}
+                            />
+                            <p>{emailError}</p>
+                        </section>
+                        <section>
+                            <textarea
+                                placeholder="Enter business description"
+                                value={user.description}
+                                onChange={(e) => setUser({...user, description: e.target.value})}
+                            />
+                            <p>{error.descriptionErr}</p>
+                        </section>
+                        <section>
+                            <input 
+                                type="password" 
+                                value={password}
+                                placeholder="Enter a password..."
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <p>{error.passwordErr}</p>
+                        </section>
                     </form>
                     <p>Already have an account? <Link href="/login">Login</Link></p>
                     <button onClick={handleSubmit}>Register</button>

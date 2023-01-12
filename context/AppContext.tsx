@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 type UserId = {
     id: string,
@@ -11,7 +11,18 @@ export const AppContext = createContext<UserId>({
 });
 
 const AppContextProvider = ({children} : {children: React.ReactNode}) => {
-    const [id, setId] = useState<string>("")
+    const [id, setId] = useState<string>("");
+
+    useEffect(() => {
+        const getId = localStorage.getItem("id");
+        if (getId) {
+            setId(JSON.parse(getId));
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("id", JSON.stringify(id));
+    }, [id])
 
     return (
         <AppContext.Provider value={{id, setId}}>

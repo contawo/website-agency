@@ -4,7 +4,7 @@ import UserNav from "../components/UserNav";
 const UserLayout = ({children} : {children: React.ReactNode}) => {
     return (
         <div>
-            <UserNav businessName="Magna Site" />
+            <UserNav />
             <main>
                 {children}
             </main>

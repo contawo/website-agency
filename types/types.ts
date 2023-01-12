@@ -1,5 +1,5 @@
 export type Project = {
-    id: string,
+    authId: string,
     progress: string,
     completed: boolean,
     start: string,
@@ -12,4 +12,10 @@ export type User = {
     businessName: string,
     email: string,
     description: string
+}
+
+export type Error = {
+    nameErr: string,
+    descriptionErr: string,
+    passwordErr: string
 }

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useAuthState } from "../../firebase/Authentication";
 
 const Validate = () => {
+    const id = useAuthState();
     return (
         <main>
             <section></section>
@@ -8,7 +10,7 @@ const Validate = () => {
                 <h2>Valid user</h2>
                 <p>Please click on the button below to view your dashboard</p>
                 <button>
-                    <Link href="/user-1">Dashboard</Link>
+                    <Link href={`/${id}`}>Dashboard</Link>
                 </button>
             </section>
         </main>
