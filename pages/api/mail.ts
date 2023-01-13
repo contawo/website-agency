@@ -17,7 +17,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ message: "Bad Request" })
     }
     try {
-      console.log(data)
       await transporter.sendMail({
         from: "magnasitebusiness@gmail.com",
         to: data.email,

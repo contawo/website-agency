@@ -35,13 +35,13 @@ const Register = () => {
         
         if (user.email && password && user.businessName && user.description) {
             createUserWithEmailAndPassword(auth, user.email, password).then(async res => {
-                const user2 = {
+                const user2 : User = {
                     authId: res.user.uid,
                     businessName: user.businessName,
                     email: user.email,
                     description: user.description
                 }
-                const project2 = {
+                const project2: Project = {
                     authId: res.user.uid,
                     progress: "Consultation",
                     completed: false,
