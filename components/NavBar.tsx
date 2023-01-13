@@ -8,6 +8,11 @@ import { useRouter } from "next/router";
 const NavBar = () => {
     const [showMobile, setShowMobile] = useState<boolean>(false)
     const animateNav = useAnimation();
+    const [slug, setSlug] = useState<string>("")
+
+    useEffect(() => {
+        setSlug(document?.URL.split("/")[3])
+    }, [slug])
 
     useEffect(() => {
         if (showMobile) {
@@ -34,10 +39,10 @@ const NavBar = () => {
                     <h2 className={styles.title}>Magna <b>Site</b></h2>
                 </section>
                 <section className={styles.prompt}>
-                    <Link data-text="HOME" href="/" className={(document.URL.split("/")[3] === "") ? styles.active : styles.desktopLink}>Home</Link>
-                        <Link data-text="ABOUT" href="/about" className={(document.URL.split("/")[3] === "about") ? styles.active : styles.desktopLink}>About</Link>
-                    <Link data-text="REGISTER" href="/register" className={(document.URL.split("/")[3] === "register") ? styles.active : styles.desktopLink}>Register</Link>
-                    <Link data-text="LOGIN" href="/login" className={(document.URL.split("/")[3] === "login") ? styles.active : styles.desktopLink}>Login</Link>
+                    <Link data-text="HOME" href="/" className={(slug === "") ? styles.active : styles.desktopLink}>Home</Link>
+                        <Link data-text="ABOUT" href="/about" className={(slug === "about") ? styles.active : styles.desktopLink}>About</Link>
+                    <Link data-text="REGISTER" href="/register" className={(slug === "register") ? styles.active : styles.desktopLink}>Register</Link>
+                    <Link data-text="LOGIN" href="/login" className={(slug === "login") ? styles.active : styles.desktopLink}>Login</Link>
                 </section>
             </section>
 
