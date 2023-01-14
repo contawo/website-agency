@@ -2,6 +2,8 @@ import MainLayout from "../../layout/MainLayout";
 import styles from "../../styles/About.module.css";
 import {useState} from "react";
 import Mission from "../../components/utils/Mission";
+import Who from "../../components/utils/Who";
+import Team from "../../components/utils/Team";
 
 const Z_INDEX : {LOW: number; MIDDLE: number; HIGH: number;} = {
     LOW: 2,
@@ -35,7 +37,9 @@ const About = () => {
                             setElementThree({index: Z_INDEX.MIDDLE, justify: "flex-end"})
                         }}
                         style={{backgroundColor: "#36C85F"}}
-                        className={styles.inside}>01</div>
+                        className={styles.inside}>
+                            <Who />
+                        </div>
                 </div>
                 <div 
                     style={{
@@ -67,7 +71,9 @@ const About = () => {
                             setElementThree({index: Z_INDEX.LOW, justify: "flex-end"})
                         }}
                         style={{backgroundColor: "#000000"}}
-                        className={styles.inside}>03</div>
+                        className={styles.inside}>
+                            <Team />
+                        </div>
                 </div>
             </section>
         </MainLayout>
