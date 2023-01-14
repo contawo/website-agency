@@ -1,9 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
 import MainLayout from '../layout/MainLayout'
 import Intro from '../components/utils/Intro'
+import Process from '../components/utils/Process'
+import Quality from '../components/utils/Quality'
+import Progress from '../components/utils/Progress'
+import Maintain from '../components/utils/Maintain'
+import Prompt from '../components/utils/Prompt'
+import Footer from '../components/utils/Footer'
 
 export default function Home() {
   return (
@@ -14,8 +17,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <div>
+        <div style={{width: "100%"}}>
           <Intro />
+          <Process />
+          <Quality />
+          <Progress />
+          <Maintain />
+          <Prompt />
+          <Footer />
         </div>
     </MainLayout>
   )

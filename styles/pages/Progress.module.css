@@ -1,0 +1,30 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5rem;
+}
+
+.slang {
+    font-size: .7rem;
+    color: #36C85F;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 1.8rem;
+    margin-bottom: .8rem;
+}
+
+.description {
+    font-size: .9rem;
+    margin-bottom: 1.2rem;
+    max-width: 700px;
+    text-align: center;
+}
+
+.show {
+    width: 45%;
+}

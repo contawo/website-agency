@@ -26,7 +26,7 @@ const Intro = () => {
                     </a>
                 </div>
                 <div className={styles.socials}>
-                    {/* <p>Find us</p> */}
+                    <p>Find us</p>
                     <a href="#home" className={styles.social}>
                         <FaInstagram />
                     </a>

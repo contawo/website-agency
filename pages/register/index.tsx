@@ -6,6 +6,10 @@ import { useRouter } from "next/router";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import Lottie from "lottie-react";
+import register from "../../svg/register.json";
+import styles from "../../styles/Register.module.css";
+import {BiWalk} from "react-icons/bi";
 
 const postForm = async (data: User) => fetch("/api/mail", {
     method: "POST",
@@ -74,49 +78,60 @@ const Register = () => {
 
     return (
         <MainLayout>
-            <main>
-                <section></section>
-                <section>
-                    <h2>Register an account</h2>
-                    <form>
-                        <section>
+            <main className={styles.main}>
+                <section className={styles.side}>
+                    <Lottie animationData={register} loop={true} />
+                </section>
+                <section className={styles.content}>
+                    <h2 className={styles.title}>Register an account</h2>
+                    <p className={styles.description}>Thank you for choosing our platform, and we cannott wait to see what you will achieve with us.</p>
+                    <form className={styles.form}>
+                        <section className={styles.section}>
                             <input 
                                 type="text" 
+                                className={styles.input}
                                 value={user.businessName} 
                                 placeholder="Enter business name..." 
                                 onChange={(e) => setUser({...user, businessName: e.target.value})}
                             />
-                            <p>{error.nameErr}</p>
+                            <p className={styles.error}>{error.nameErr}</p>
                         </section>
-                        <section>
+                        <section className={styles.section}>
                             <input 
                                 type="email" 
                                 value={user.email}
+                                className={styles.input}
                                 placeholder="Enter business email..." 
                                 onChange={(e) => setUser({...user, email: e.target.value})}
                             />
-                            <p>{emailError}</p>
+                            <p className={styles.error}>{emailError}</p>
                         </section>
-                        <section>
+                        <section className={styles.section}>
                             <textarea
                                 placeholder="Enter business description"
                                 value={user.description}
+                                className={styles.area}
                                 onChange={(e) => setUser({...user, description: e.target.value})}
                             />
-                            <p>{error.descriptionErr}</p>
+                            <p className={styles.error}>{error.descriptionErr}</p>
                         </section>
-                        <section>
+                        <section className={styles.section}>
                             <input 
                                 type="password" 
                                 value={password}
+                                className={styles.input}
                                 placeholder="Enter a password..."
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <p>{error.passwordErr}</p>
+                            <p className={styles.error}>{error.passwordErr}</p>
                         </section>
                     </form>
-                    <p>Already have an account? <Link href="/login">Login</Link></p>
-                    <button onClick={handleSubmit}>Register</button>
+                    <p className={styles.account}>Already have an account? <Link className={styles.accountLink} href="/login">Login</Link></p>
+                    <div className={styles.btnContainer}>
+                        <button className={styles.button} onClick={handleSubmit}>
+                            <BiWalk className={styles.buttonIcon} />
+                            Register</button>
+                    </div>
                 </section>
             </main>
         </MainLayout>

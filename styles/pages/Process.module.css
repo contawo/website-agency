@@ -1,0 +1,84 @@
+.process {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.headerSlang {
+    font-size: .7rem;
+    color: #36C85F;
+    font-weight: 700;
+}
+
+.headerTitle {
+    font-size: 1.8rem;
+}
+
+.headerDescription {
+    font-size: .9rem;
+}
+
+.content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    gap: 2.5rem;
+}
+
+.each {
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.eachOne,
+.eachTwo,
+.eachThree,
+.eachFour {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: .8rem;
+    background-color: pink;
+    border-radius: 10px;
+}
+
+.eachOne {
+    background-color: rgb(214, 78, 78);
+}
+.eachTwo {
+    background-color: rgb(78, 214, 78);
+}
+.eachThree {
+    background-color: rgb(214, 160, 78);
+}
+.eachFour {
+    background-color: rgb(78, 194, 214);
+}
+
+.eachIcon {
+    font-size: 1.1rem;
+}
+
+.eachTitle {
+    font-size: 1rem;
+}
+
+.eachDescription {
+    font-size: .6rem;
+    text-align: center;
+    max-width: 90%;
+}
