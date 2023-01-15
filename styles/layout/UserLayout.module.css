@@ -1,0 +1,33 @@
+.userLayout {
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    padding-bottom: 0;
+    position: relative;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.userContainer {
+    max-width: 1400px;
+    height: 100%;
+}
+
+.userLayout {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.userLayout::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+@media screen and (max-width: 480px) {
+    .userLayout {
+        padding: 1rem;
+    }
+}

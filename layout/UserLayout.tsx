@@ -1,14 +1,15 @@
 import React from "react";
 import UserNav from "../components/UserNav";
+import styles from "../styles/layout/UserLayout.module.css";
 
 const UserLayout = ({children} : {children: React.ReactNode}) => {
     return (
-        <div>
+        <div className={styles.userLayout}>
             <UserNav />
-            <main>
+            <main className={styles.userContainer}>
                 {children}
             </main>
-        </div>
+        </div> 
     )
 }
 

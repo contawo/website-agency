@@ -3,11 +3,13 @@ import { collection, addDoc, onSnapshot, where, query } from "firebase/firestore
 import { db } from "../firebase/firebaseConfig";
 import { useEffect, useState } from "react";
 import { Project } from "../types/types";
-import {useContext} from "react"
-import { AppContext } from "../context/AppContext";
+import { useRouter } from "next/router";
+import Complete from "../components/user/Complete";
+import View from "../components/user/View";
+import { useAuthState } from "../firebase/Authentication";
 
 const User = () => {
-    const {id} = useContext(AppContext);
+    const id = useAuthState();
     const [projectData, setProjectData] = useState<Project>({
         authId: "",
         progress: "",
@@ -16,15 +18,15 @@ const User = () => {
         end: "",
         url: ""
     });
+    const router = useRouter();
 
     const ref = collection(db, "projects");
     const queryData = query(ref, where("authId", "==", id))
 
     useEffect(() => {
         onSnapshot(queryData, (snapshot) => {
-            const data = snapshot.docs[0].data()
-            
-            if (data) {
+            if (!snapshot.empty) {
+                const data = snapshot.docs[0].data()
                 setProjectData({
                     authId: data.authId,
                     progress: data.progress,
@@ -33,13 +35,15 @@ const User = () => {
                     end: data.end,
                     url: data.url
                 });
-            }
+            } 
         })
-    }, [queryData])
+    }, [queryData, router])
 
     return (
         <UserLayout>
-            <h1>Progress {projectData.progress}</h1>
+            {
+                projectData.completed ? <Complete /> : <View text={projectData.progress} />
+            }
         </UserLayout>
     )
 }

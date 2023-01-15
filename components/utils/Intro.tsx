@@ -6,8 +6,15 @@ import styles from "../../styles/pages/Intro.module.css"
 import {BiRocket} from "react-icons/bi";
 import {RiFootprintLine} from "react-icons/ri";
 import {FaInstagram, FaFacebookSquare, FaLinkedin} from "react-icons/fa";
+import { useRouter } from 'next/router';
 
 const Intro = () => {
+    const router = useRouter();
+
+    const getStarted = () => {
+        router.push("/register")
+    }
+
     return (
         <section className={styles.main}>
             <div className={styles.container}>
@@ -17,7 +24,7 @@ const Intro = () => {
                     </span> online</h1>
                 <p className={styles.description}>We believe that every business deserves a website that is easy to use, responsive and fast. We make it our mission to ensure that your business has the best possible online presence.</p>
                 <div className={styles.buttons}>
-                    <button className={styles.mainButton}>
+                    <button className={styles.mainButton} onClick={getStarted}>
                         <BiRocket className={styles.mainButtonIcon} />
                         Get Started</button>
                     <a href="#process" className={styles.process}>

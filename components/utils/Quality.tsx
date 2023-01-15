@@ -3,8 +3,14 @@ import Lottie from "lottie-react";
 import quality from "../../svg/quality.json";
 import styles from "../../styles/pages/Quality.module.css"
 import {BiRocket} from "react-icons/bi";
+import { useRouter } from 'next/router';
 
 const Quality = () => {
+    const router = useRouter();
+
+    const getStarted = () => {
+        router.push("/register")
+    }
     return (
         <section className={styles.main}>
             <div className={styles.side}>
@@ -19,7 +25,7 @@ const Quality = () => {
                     </span> websites</h1>
                 <p className={styles.description}>We believe in providing the best quality services possible to help our clients achieve their goals. Our approach is always customer-orientated, striving for quality over quantity.</p>
                 <div className={styles.buttons}>
-                    <button className={styles.mainButton}>
+                    <button className={styles.mainButton} onClick={getStarted}>
                         <BiRocket className={styles.mainButtonIcon} />
                         Get Started</button>
                 </div>

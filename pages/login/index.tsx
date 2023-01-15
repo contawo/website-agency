@@ -1,12 +1,13 @@
 import Link from "next/link";
 import MainLayout from "../../layout/MainLayout";
 import { useRouter } from "next/router";
-import { useLogin } from "../../firebase/Authentication";
 import { useState } from "react";
 import Lottie from "lottie-react";
 import login from "../../svg/login.json";
 import styles from "../../styles/Login.module.css";
 import {IoMdLogIn} from "react-icons/io";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebaseConfig";
 
 type Info = {
     email: string,
@@ -20,12 +21,14 @@ const Login = () => {
         password: ""
     })
     const [err, setErr] = useState<string>("");
-    const {logged} = useLogin(user.email, user.password);
 
     const handleSubmit = () => {
-        setUser({ email: user.email, password: "" });
-        if (logged) {
-            router.push("/validate")
+        if (user.email && user.password) {
+            signInWithEmailAndPassword(auth, user.email, user.password).then(res => {
+                router.push("/validate")
+            }).catch(error => {
+                console.log(error.message)
+            })
         } else {
             setErr("Invalid email or password");
         }
