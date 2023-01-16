@@ -8,7 +8,7 @@ const UserNav = () => {
     const router = useRouter();
     const handleLogout = () => {
         signOut(auth).then(() => {
-            router.push("/login")
+            router.push("/register")
         })
     }
 
