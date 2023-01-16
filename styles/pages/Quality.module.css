@@ -119,3 +119,29 @@
         font-size: .8rem;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sideMain {
+        width: 90%;
+    }
+    .container {
+        align-items: center;
+    }
+    .title,
+    .description {
+        text-align: center;
+    }
+    .buttons {
+        justify-content: center;
+        margin-bottom: 1rem;
+        gap: .5rem;
+    }
+    .mainButton {
+        padding: .8rem;
+    }
+}

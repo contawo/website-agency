@@ -19,10 +19,10 @@ const Maintain = () => {
                 </div>
             </div>
             <div className={styles.container}>
-                <h1 className={styles.title}>We also offer <br/><span className={styles.titleSpan}>
-                    <b>website</b>
-                    <b>website</b>
-                    </span> maintainance</h1>
+                <h1 className={styles.title}>We offer <br/><span className={styles.titleSpan}>
+                    <b>site</b>
+                    <b>site</b>
+                    </span> maintenance</h1>
                 <p className={styles.description}>We are a business that offers website maintenance as a continuous services to guarantee that a website is current and operates as intended. This can involve activities like content updates, bug fixes, security audits, and website traffic monitoring.</p>
                 <div className={styles.buttons}>
                     <button className={styles.mainButton} onClick={getStarted}>

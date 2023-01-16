@@ -67,3 +67,29 @@
     font-size: .9rem;
     width: 75%;
 }
+
+@media screen and (max-width: 480px) {
+    .nest {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nestHead,
+    .nestBody,
+    .qCont,
+    .bDescription,
+    .bDescription2 {
+        width: 100%;
+    }
+    .headNumber {
+        font-size: 9rem;
+    }
+    .qDescription {
+        font-size: .9rem;
+    }
+
+    .nestHead {
+        margin-bottom: 1rem;
+    }
+}

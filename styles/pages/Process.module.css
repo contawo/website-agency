@@ -75,10 +75,22 @@
 
 .eachTitle {
     font-size: 1rem;
+    text-align: center;
 }
 
 .eachDescription {
     font-size: .6rem;
     text-align: center;
     max-width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+    .process {
+        margin-bottom: 1rem;
+    }
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0rem;
+        gap: .5rem;
+    }
 }

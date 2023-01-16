@@ -16,6 +16,7 @@
 .title {
     font-size: 1.8rem;
     margin-bottom: .8rem;
+    text-align: center;
 }
 
 .description {
@@ -27,4 +28,13 @@
 
 .show {
     width: 45%;
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        padding: 1rem;
+    }
+    .show {
+        width: 90%;
+    }
 }
