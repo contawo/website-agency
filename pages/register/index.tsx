@@ -10,6 +10,14 @@ import Lottie from "lottie-react";
 import register from "../../svg/register.json";
 import styles from "../../styles/Register.module.css";
 import {BiWalk} from "react-icons/bi";
+import { GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const render = ""
+    return {
+        props: {render}
+    }
+}
 
 const postForm = async (data: User) => fetch("/api/mail", {
     method: "POST",

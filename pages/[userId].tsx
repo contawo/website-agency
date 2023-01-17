@@ -1,5 +1,5 @@
 import UserLayout from "../layout/UserLayout";
-import { collection, addDoc, onSnapshot, where, query } from "firebase/firestore";
+import { collection, onSnapshot, where, query } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { useEffect, useState } from "react";
 import { Project } from "../types/types";
@@ -7,8 +7,16 @@ import { useRouter } from "next/router";
 import Complete from "../components/user/Complete";
 import View from "../components/user/View";
 import { useAuthState } from "../firebase/Authentication";
+import { GetServerSideProps } from "next";
 
-const User = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const render = ""
+    return {
+        props: {render}
+    }
+}
+
+const User = ({data} : {data: Project}) => {
     const id = useAuthState();
     const [projectData, setProjectData] = useState<Project>({
         authId: "",
@@ -42,7 +50,7 @@ const User = () => {
     return (
         <UserLayout>
             {
-                projectData.completed ? <Complete /> : <View text={projectData.progress} />
+                projectData?.completed ? <Complete /> : <View text={projectData?.progress} />
             }
         </UserLayout>
     )

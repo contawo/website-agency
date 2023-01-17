@@ -8,10 +8,18 @@ import styles from "../../styles/Login.module.css";
 import {IoMdLogIn} from "react-icons/io";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
+import { GetServerSideProps } from "next";
 
 type Info = {
     email: string,
     password: string
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const render = ""
+    return {
+        props: {render}
+    }
 }
 
 const Login = () => {

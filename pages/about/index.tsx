@@ -4,6 +4,7 @@ import {useState} from "react";
 import Mission from "../../components/utils/Mission";
 import Who from "../../components/utils/Who";
 import Team from "../../components/utils/Team";
+import { GetServerSideProps } from "next";
 
 const Z_INDEX : {LOW: number; MIDDLE: number; HIGH: number;} = {
     LOW: 2,
@@ -14,6 +15,13 @@ const Z_INDEX : {LOW: number; MIDDLE: number; HIGH: number;} = {
 type Element = {
     index: number,
     justify: "flex-start" | "center" | "flex-end"
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const render = ""
+    return {
+        props: {render}
+    }
 }
 
 const About = () => {

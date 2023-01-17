@@ -3,7 +3,15 @@ import Lottie from "lottie-react";
 import email from "../../svg/email.json";
 import styles from "../../styles/Email.module.css";
 import { useRouter } from "next/router";
-import {TbLayoutDashboard} from "react-icons/tb"
+import {TbLayoutDashboard} from "react-icons/tb";
+import { GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const render = ""
+    return {
+        props: {render}
+    }
+}
 
 const Email = () => {
     const id = useAuthState();
