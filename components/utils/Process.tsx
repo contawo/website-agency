@@ -19,7 +19,7 @@ const Process = () => {
                     <h2 className={styles.eachTitle}>Consultation</h2>
                     <p className={styles.eachDescription}>We start by having a conversation with you to understand your business, your target audience, and your goals for your website.</p>
                 </section>
-                <section className={styles.each}>
+                <section className={styles.eachDesign}>
                     <div className={styles.eachTwo}>
                         <MdDesignServices className={styles.eachIcon} />
                     </div>

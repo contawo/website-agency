@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAX7bjAKuLczmEcZEM6Mw5252JXNlX7v3I",
-  authDomain: "magnasite-8e3fa.firebaseapp.com",
-  projectId: "magnasite-8e3fa",
-  storageBucket: "magnasite-8e3fa.appspot.com",
-  messagingSenderId: "709371638470",
-  appId: "1:709371638470:web:cea126ac3de338c937ddc7",
-  measurementId: "G-FRHCHS5N1L"
+    apiKey: process.env.NEXT_PUBLIC_apiKey,
+    authDomain: process.env.NEXT_PUBLIC_authDomain,
+    projectId: process.env.NEXT_PUBLIC_projectId,
+    storageBucket: process.env.NEXT_PUBLIC_storageBucket,
+    messagingSenderId: process.env.NEXT_PUBLIC_messagingSenderId,
+    appId: process.env.NEXT_PUBLIC_appId,
+    measurementId: process.env.NEXT_PUBLIC_measurementId
 };
 
 const app = initializeApp(firebaseConfig);

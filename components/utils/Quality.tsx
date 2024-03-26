@@ -9,7 +9,7 @@ const Quality = () => {
     const router = useRouter();
 
     const getStarted = () => {
-        router.push("/register")
+        router.push("/register") 
     }
     return (
         <section className={styles.main}>

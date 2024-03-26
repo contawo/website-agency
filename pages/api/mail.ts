@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-      user: "magnasitebusiness@gmail.com",
+      user: "onlinesitebusiness@gmail.com",
       pass: "dpbftqxodobdopqv"
   }
 })
@@ -18,18 +18,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     try {
       await transporter.sendMail({
-        from: "magnasitebusiness@gmail.com",
+        from: "onlinesitebusiness@gmail.com",
         to: data.email,
         subject: "Thank you for joining us",
-        text: "Please click on the link to schedule a call: https://calendly.com/magnasitebusiness/consulting-meeting ",
+        text: "Please click on the link to schedule a call: https://calendly.com/onlinesitebusiness/consulting-meeting ",
         html: `<h1>Hello, ${data.businessName}</h1>
               <p>We would like to extend our warmest welcome to you as our newest client. We are thrilled that you have chosen our company to provide you with the services you need.</p>
               <h3>Let us talk:</h3>    
-              <p>Please click on the link to schedule for a call: https://calendly.com/magnasitebusiness/consulting-meeting </p>  
+              <p>Please click on the link to schedule for a call: https://calendly.com/onlinesitebusiness/consulting-meeting </p>  
               <br />
               <p>Thank you again for your business, and we look forward to working with you.</p>
               <p>Thank you</p>
-              <a href="https://magnasite.co.za/">MagnaSite</a>
+              <a href="https://onlinesite.co.za/">onlinesite</a>
         `
       }) 
 

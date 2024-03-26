@@ -9,7 +9,7 @@ import {FaInstagram, FaFacebookSquare, FaLinkedin} from "react-icons/fa";
 import { useRouter } from 'next/router';
 
 const Intro = () => {
-    const router = useRouter();
+    const router = useRouter(); 
 
     const getStarted = () => {
         router.push("/register")

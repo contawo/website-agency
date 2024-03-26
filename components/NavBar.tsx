@@ -36,7 +36,7 @@ const NavBar = () => {
             <section className={styles.desktop}>
                 <section className={styles.head}>
                     <FaDoorOpen onClick={() => setShowMobile(true)} className={styles.toggle} />
-                    <h2 className={styles.title}>Magna<b>Site</b></h2>
+                    <h2 className={styles.title}>Online<b>Site</b></h2>
                 </section>
                 <section className={styles.prompt}>
                     <Link data-text="HOME" href="/" className={(slug === "") ? styles.active : styles.desktopLink}>Home</Link>

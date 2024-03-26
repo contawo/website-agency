@@ -7,8 +7,8 @@ import styles from "../../styles/pages/Footer.module.css";
 const Footer = () => {
     return (
         <section className={styles.footer}>
-            <Image src={logo} alt="business-logo" width={140} />
-            <p className={styles.description}>Let us magnasite your business</p>
+            {/* <Image src={logo} alt="business-logo" width={140} /> */}
+            <p className={styles.description}>Let us onlinesite your business</p>
             <div className={styles.links}>
                 <Link href="/" className={styles.link}>Home</Link>
                 <FaMinus className={styles.dot} />

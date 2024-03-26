@@ -18,8 +18,8 @@ const Mission = () => {
             <div className={styles.nestBody}>
                 <h3 className={styles.bTitle}>Who are we?</h3>
                 <p className={styles.bDescription}>A website development company specializes in designing and building websites for businesses. They work with clients to understand their needs and goals, and then use that information to create a custom website that is tailored to the client brand and target audience.</p>
-                <h3 className={styles.bTitle}>Magna Site meaning</h3>
-                <p className={styles.bDescription2}>Magna (Latin) = Great (English). The name was suggested by the girlfriend of the owner. The site comes from the name website.</p>
+                <h3 className={styles.bTitle}>Online Site meaning</h3>
+                <p className={styles.bDescription2}>Online (English) = Presence (English). The name was suggested by the girlfriend of the owner. The site comes from the name website.</p>
             </div>
         </section>
     )
